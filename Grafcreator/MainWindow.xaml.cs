@@ -22,6 +22,7 @@ namespace Grafcreator
 
         private Color currentStroke = Colors.Black;
         private Color currentFill = Colors.Transparent;
+        private Button lastSelectedToolButton = null;
 
         private enum EditorMode
         {
@@ -37,30 +38,35 @@ namespace Grafcreator
             Chose.Click += (s, e) =>
             {
                 currentMode = EditorMode.Select;
+                UpdateToolButtonSelection(s as Button);
             };
 
             LineTool.Click += (s, e) =>
             {
                 currentMode = EditorMode.Draw;
                 selectedTool = "Line";
+                UpdateToolButtonSelection(s as Button);
             };
 
             RectTool.Click += (s, e) =>
             {
                 currentMode = EditorMode.Draw;
                 selectedTool = "Rectangle";
+                UpdateToolButtonSelection(s as Button);
             };
 
             CircleTool.Click += (s, e) =>
             {
                 currentMode = EditorMode.Draw;
                 selectedTool = "Circle";
+                UpdateToolButtonSelection(s as Button);
             };
 
             TriangleTool.Click += (s, e) =>
             {
                 currentMode = EditorMode.Draw;
                 selectedTool = "Triangle";
+                UpdateToolButtonSelection(s as Button);
             };
 
             DrawCanvas.MouseDown += Canvas_MouseDown;
@@ -193,5 +199,23 @@ namespace Grafcreator
                 }
             }
         }
+        private void UpdateToolButtonSelection(Button selectedButton)
+        {
+            // Возвращаем предыдущей кнопке исходный стиль (убираем обводку)
+            if (lastSelectedToolButton != null)
+            {
+                lastSelectedToolButton.ClearValue(Button.BorderBrushProperty);
+                lastSelectedToolButton.ClearValue(Button.BorderThicknessProperty);
+            }
+
+            // Выделяем новую кнопку (добавляем обводку)
+            if (selectedButton != null)
+            {
+                selectedButton.BorderBrush = new SolidColorBrush(Colors.Red); // или любой другой цвет
+                selectedButton.BorderThickness = new Thickness(2);
+                lastSelectedToolButton = selectedButton;
+            }
+        }
+
     }
 }
