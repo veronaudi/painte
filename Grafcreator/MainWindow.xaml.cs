@@ -186,6 +186,11 @@ namespace Grafcreator
             if (sender is Button btn && btn.Background is SolidColorBrush brush)
             {
                 currentFill = brush.Color;
+
+                if (selectedShape != null)
+                {
+                    selectedShape.Color(currentStroke, currentFill);
+                }
             }
         }
     }

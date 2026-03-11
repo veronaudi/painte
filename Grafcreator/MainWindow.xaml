@@ -27,7 +27,7 @@
                     Margin="5" Height="40" Background="#fee8eb" BorderBrush="#81566a" BorderThickness="1.5"/>
             <Button Name="TriangleTool" Content="△" FontSize="18"
                     Margin="5" Height="40" Background="#fee8eb" BorderBrush="#81566a" BorderThickness="1.5"/>
-            <Button Name="Chose" Content="✥" FontSize="18"
+            <Button Name="Chose" Content="⬈" FontSize="18"
                     Margin="5" Height="40" Background="#fee8eb" BorderBrush="#81566a" BorderThickness="1.5"/>
             <Button Name="Delete" Content="X" FontSize="18" Click="Delete_Click"
                     Margin="5" Height="40" Background="#fee8eb" BorderBrush="#81566a" BorderThickness="1.5"/>
